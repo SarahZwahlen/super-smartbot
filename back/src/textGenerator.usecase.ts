@@ -1,9 +1,10 @@
 import { textGeneratorInterface } from './textGenerator.interface';
 
 const textGeneratorUsecase = async (
-    textGenerator: textGeneratorInterface
+    textGenerator: textGeneratorInterface,
+    subject: string
 ): Promise<string> => {
-    return await textGenerator.generateText();
+    return await textGenerator.generateText(subject);
 };
 
 export default textGeneratorUsecase;

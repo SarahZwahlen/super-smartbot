@@ -1,11 +1,11 @@
 import { textGeneratorInterface } from './textGenerator.interface';
 
 const textCortex: textGeneratorInterface = {
-    generateText: async (): Promise<string> => {
+    generateText: async (subject?: string): Promise<string> => {
         const apiURL = 'https://api.textcortex.com/v1/texts/blogs';
 
         const body = {
-            context: 'Les escargots sont de retour !',
+            context: subject || 'les escargots sont de retour',
             formality: 'less',
             max_tokens: 2048,
             model: 'chat-sophos-1',
