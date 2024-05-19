@@ -1,24 +1,19 @@
 import { Request, Response } from 'express';
-import textGeneratorUsecase from './textGenerator.usecase';
 import textCortex from './generate-text.textCortex';
+import { MailGunSendMail, createMailGunClient } from './mailgun.client';
 
 const mailController = async (req: Request, res: Response) => {
     try {
-        //Implémenter un mailer
+        await MailGunSendMail(
+            createMailGunClient(),
+            'Encore la faute des tartes aux pommes',
+            textCortex
+        );
 
-        //Lui passer mon résultat de generation de text
-
-        //rire
-
-       
-
-        res.status(200).json({
-            message: await textGeneratorUsecase(textCortex)
-        });
+        return res.status(200).json({ message: 'OK' });
     } catch (error) {
         console.log(error);
-        res.status(400).json({
-            message: 'An error occured',
+        return res.status(400).json({
             error
         });
     }
