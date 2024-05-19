@@ -1,4 +1,4 @@
-const prompts: string[] = [
+export const promptList: string[] = [
     'Les chaussettes se rebellent !',
     'Le retour des biscuits sablés',
     'Les lapins ont pris le contrôle !',

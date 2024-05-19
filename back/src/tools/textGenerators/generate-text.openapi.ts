@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { textGeneratorInterface } from './textGenerator.interface';
+import { textGeneratorInterface } from '../../interfaces/textGenerator.interface';
 
 const openAPIText: textGeneratorInterface = {
     generateText: async (): Promise<string> => {

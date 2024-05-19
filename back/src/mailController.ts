@@ -1,14 +1,18 @@
 import { Request, Response } from 'express';
-import textCortex from './generate-text.textCortex';
-import { MailGunSendMail, createMailGunClient } from './mailgun.client';
+import { mailgunMailer } from './tools/mailer/mailgun.client';
+import textCortex from './tools/textGenerators/generate-text.textCortex';
+import { MailData } from './types/mailData';
+import { sendMailUseCase } from './useCases/sendMail.useCase';
 
-const mailController = async (req: Request, res: Response) => {
+const sendMailController = async (req: Request, res: Response) => {
     try {
-        await MailGunSendMail(
-            createMailGunClient(),
-            'Encore la faute des tartes aux pommes',
-            textCortex
-        );
+        const mailData: MailData = {
+            title: req.body.mailData || null,
+            content: req.body.mailData || null,
+            to: req.body.to || process.env.ADMIN_EMAIL
+        };
+
+        await sendMailUseCase(mailgunMailer, mailData, textCortex);
 
         return res.status(200).json({ message: 'OK' });
     } catch (error) {
@@ -19,4 +23,4 @@ const mailController = async (req: Request, res: Response) => {
     }
 };
 
-export default mailController;
+export default sendMailController;

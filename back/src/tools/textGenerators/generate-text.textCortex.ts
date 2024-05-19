@@ -1,4 +1,4 @@
-import { textGeneratorInterface } from './textGenerator.interface';
+import { textGeneratorInterface } from '../../interfaces/textGenerator.interface';
 
 const textCortex: textGeneratorInterface = {
     generateText: async (subject?: string): Promise<string> => {
