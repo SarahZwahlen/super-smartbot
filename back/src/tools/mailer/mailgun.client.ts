@@ -10,7 +10,7 @@ const mailgunMailer: MailerInterface = {
 
         await client.messages
             .create(process.env.MAILGUN_SANDBOX_DOMAIN || 'nope', {
-                from: `Mailgun Sandbox <${process.env.MAILGUN_SANDBOX_USERNAME}>`,
+                from: `Super Marmotte Sandbox <${process.env.MAILGUN_SANDBOX_USERNAME}>`,
                 to: data.to || process.env.ADMIN_EMAIL,
                 subject: data.title || 'No title',
                 text: 'YOUPI',
