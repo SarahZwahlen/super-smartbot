@@ -3,7 +3,7 @@ updates :
   - package-ecosystem : "npm"
     directory : "/back"
     schedule : 
-      interval : "weekly"
+      interval : "daily"
     labels:
       - '🤖° dependabot'
     commit-message:
