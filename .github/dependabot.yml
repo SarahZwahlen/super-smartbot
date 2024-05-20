@@ -1,0 +1,10 @@
+version : 2
+updates : 
+  - package-ecosystem : "npm"
+    directory : "/back"
+    schedule : 
+      interval : "weekly"
+    labels:
+      - '🤖° dependabot'
+    commit-message:
+      prefix: '[BACK DEPS]'
