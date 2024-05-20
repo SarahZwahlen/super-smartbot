@@ -1,10 +1,14 @@
 name : Main CI
+
 run-name : ${{github.actor}} is running the main CI
+
 on : 
   push : 
       branches : [main]
   pull_request : 
       branches : [main]
+
+
 jobs:
   run-backend : 
     runs-on : ubuntu-latest
@@ -14,10 +18,8 @@ jobs:
         node-version : ["18.x"]
 
     steps : 
-      - name : "Checkout project"
-        uses : action/checkout@v4
-      - name : "Setup Node versions ${{matrix.version}}"
-        uses : actions/setup-node@v4
+      - uses : actions/checkout@v4
+      - uses : actions/setup-node@v4
         with : 
           node-version : "18.x"
       - run : npm install
