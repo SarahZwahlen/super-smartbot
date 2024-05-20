@@ -14,12 +14,12 @@ jobs:
         node-version : ["18.x"]
 
     steps : 
-      - uses : action/checkout@v4
       - name : "Checkout project"
-      - uses : actions/setup-node@v4
+        uses : action/checkout@v4
+      - name : "Setup Node versions ${{matrix.version}}"
+        uses : actions/setup-node@v4
         with : 
           node-version : "18.x"
-      - name : "Setup Node versions ${{matrix.version}}"
       - run : npm install
         working-directory : ./back
       - run : npm run start
