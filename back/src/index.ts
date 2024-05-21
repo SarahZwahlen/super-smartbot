@@ -3,6 +3,8 @@ import express from 'express';
 import session from 'express-session';
 import * as dotenv from 'dotenv';
 import router from './router';
+import compression from 'compression';
+import helmet from 'helmet';
 
 dotenv.config();
 
@@ -11,10 +13,11 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 
 app.use(
     session({
-        secret: 'keyboard cat',
+        secret: process.env.COOKIE_SECRET!,
         resave: false,
         saveUninitialized: true,
         cookie: {
@@ -33,6 +36,8 @@ app.use(
         optionsSuccessStatus: 200
     })
 );
+
+app.use(helmet());
 
 app.use('/', router);
 app.listen(process.env.PORT_BACKEND, () =>
