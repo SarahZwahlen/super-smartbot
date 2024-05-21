@@ -6,6 +6,6 @@ router.get('', (req: Request, res: Response) => {
     return res.status(200).json({ message: 'Hello from Super Marmotte' });
 });
 
-router.get('/send-mail', sendMailController);
+router.post('/send-mail', sendMailController);
 
 export default router;
