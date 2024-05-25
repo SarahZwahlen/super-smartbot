@@ -6,7 +6,7 @@ on :
   push : 
       branches : [main, front, back, CI]
   pull_request : 
-      branches : [main, front, back, CI]
+      branches : [main]
 
 
 jobs:
