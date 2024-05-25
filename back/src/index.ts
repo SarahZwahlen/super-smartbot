@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 import router from './router';
 import compression from 'compression';
 import helmet from 'helmet';
+import { UserData } from './models/user.model';
 
 dotenv.config();
 
@@ -24,11 +25,16 @@ app.use(
             path: '/',
             httpOnly: true,
             secure: false,
-            sameSite: true
+            sameSite: true,
+            domain: process.env.FRONT_LOCAL_URL
         }
     })
 );
-
+declare module 'express-session' {
+    interface SessionData {
+        username: Pick<UserData, 'username'>;
+    }
+}
 app.use(
     cors({
         origin: process.env.FRONT_LOCAL_URL,
@@ -38,6 +44,7 @@ app.use(
 );
 
 app.use(helmet());
+app.disable('x-powered-by');
 
 app.use('/', router);
 app.listen(process.env.PORT_BACKEND, () =>
