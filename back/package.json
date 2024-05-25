@@ -5,6 +5,9 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon",
+        "build-render": "npm install && npm run build",
+        "start-render": "node ./dist/src/index.js",
+        "build": "tsc --build",
         "test:live": "jest --watchAll",
         "test": "jest --testEnvironment=node --runInBand ",
         "lint": "eslint src/**/*.ts",
