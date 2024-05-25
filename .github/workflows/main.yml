@@ -4,7 +4,7 @@ run-name : ${{github.actor}} is running the main CI
 
 on : 
   push : 
-      branches : [main]
+      branches : [main, front, back, CI]
   pull_request : 
       branches : [main]
 
@@ -24,3 +24,20 @@ jobs:
           node-version : "18.x"
       - run : npm install
         working-directory : ./back
+
+  build-frontend : 
+    runs-on : ubuntu-latest
+
+    strategy : 
+      matrix : 
+        node-version : ["18.x"]
+
+    steps : 
+      - uses : actions/checkout@v4
+      - uses : actions/setup-node@v4
+        with : 
+          node-version : "18.x"
+      - run : npm install
+        working-directory : ./client
+      - run : npm run build
+        working-directory : ./client
