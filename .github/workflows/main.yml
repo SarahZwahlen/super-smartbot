@@ -25,7 +25,7 @@ jobs:
       - run : npm install
         working-directory : ./back
 
-  install-frontend : 
+  build-frontend : 
     runs-on : ubuntu-latest
 
     strategy : 
