@@ -4,15 +4,13 @@ updates :
     directory : "/back"
     schedule : 
       interval : "daily"
-    labels:
-      - '🤖° dependabot'
+
     commit-message:
       prefix: '[BACK DEPS]'
   - package-ecosystem : "npm"
     directory : "/client"
     schedule :
       interval : "daily"
-    labels:
-      - '🤖° dependabot'
+
     commit-message:
       prefix: '[FRONT DEPS]'
