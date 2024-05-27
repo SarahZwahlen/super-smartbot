@@ -1,3 +1,9 @@
+import { SendMail } from "./send-mail/SendMail";
+
 export const Main = () => {
-  return <main></main>;
+  return (
+    <main>
+      <SendMail />
+    </main>
+  );
 };

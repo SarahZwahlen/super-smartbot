@@ -1,4 +1,4 @@
-import { textGeneratorInterface } from './interfaces/textGenerator.interface';
+import { textGeneratorInterface } from '../../interfaces/textGenerator.interface';
 
 const textGeneratorUsecase = async (
     textGenerator: textGeneratorInterface,

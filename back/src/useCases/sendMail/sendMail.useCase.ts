@@ -1,7 +1,7 @@
-import { MailerInterface } from '../interfaces/mailer.interface';
-import { textGeneratorInterface } from '../interfaces/textGenerator.interface';
-import { promptTool } from '../tools/prompts/prompt.tools';
-import { MailData } from '../types/mailData';
+import { MailerInterface } from '../../interfaces/mailer.interface';
+import { textGeneratorInterface } from '../../interfaces/textGenerator.interface';
+import { promptTool } from '../../tools/prompts/prompt.tools';
+import { MailData } from '../../types/mailData';
 
 export const sendMailUseCase = async (
     mailer: MailerInterface,

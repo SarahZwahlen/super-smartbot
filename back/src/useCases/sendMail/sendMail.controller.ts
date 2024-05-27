@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { mailgunMailer } from './tools/mailer/mailgun.client';
-import textCortex from './tools/textGenerators/generate-text.textCortex';
-import { MailData } from './types/mailData';
-import { sendMailUseCase } from './useCases/sendMail.useCase';
+import { mailgunMailer } from '../../tools/mailer/mailgun.client';
+import textCortex from '../../tools/textGenerators/generate-text.textCortex';
+import { MailData } from '../../types/mailData';
+import { sendMailUseCase } from './sendMail.useCase';
 
 const sendMailController = async (req: Request, res: Response) => {
     try {
