@@ -13,5 +13,4 @@ export const isAuthenticated = (
             error: 'Unauthorized'
         });
     }
-    console.log('Not implemented yet');
 };
