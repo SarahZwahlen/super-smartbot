@@ -24,9 +24,9 @@ app.use(
         cookie: {
             path: '/',
             httpOnly: true,
-            secure: false,
+            secure: false, // Has to be truthy but make the session works only with HTTPS
             sameSite: true,
-            domain: process.env.FRONT_LOCAL_URL
+            maxAge: 3600000
         }
     })
 );
