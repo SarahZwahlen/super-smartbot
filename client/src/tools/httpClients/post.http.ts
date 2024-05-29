@@ -1,6 +1,6 @@
 export const HTTPPostClient = async (
   url: string,
-  body: string | FormData
+  body?: string | FormData
 ): Promise<Response> => {
   let contentType = "";
   if (typeof body === "string") {
@@ -12,13 +12,16 @@ export const HTTPPostClient = async (
 
   const request: RequestInit = {
     method: "post",
-    body: body,
     mode: "cors",
     credentials: "include",
     headers: {
       "content-type": contentType,
     },
   };
+
+  if (body) {
+    request.body = body;
+  }
 
   return await fetch(`${process.env.REACT_APP_BACKEND_URL}/${url}`, request);
 };
