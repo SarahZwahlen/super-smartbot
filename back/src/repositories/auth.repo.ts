@@ -4,7 +4,7 @@ export const authRepoInMemory: AuthInterface = {
     checkUserIdentity: (user) => {
         if (
             user.password === process.env.ADMIN_PASSWORD &&
-            user.username === process.env.ADMIN_EMAIL
+            user.email === process.env.ADMIN_EMAIL
         ) {
             return true;
         } else {
