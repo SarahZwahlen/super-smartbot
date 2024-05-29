@@ -1,6 +1,8 @@
+import { HTTPPostClient } from "../../tools/httpClients/post.http";
+
 export const SendMail = () => {
-  const sendMail = () => {
-    console.log("send");
+  const sendMail = async () => {
+    await HTTPPostClient("send-mail");
   };
 
   return <button onClick={sendMail}>Send mail</button>;

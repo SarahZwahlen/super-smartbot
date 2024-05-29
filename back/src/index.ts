@@ -32,7 +32,7 @@ app.use(
 );
 declare module 'express-session' {
     interface SessionData {
-        username: Pick<UserData, 'username'>;
+        username: Pick<UserData, 'email'>;
     }
 }
 app.use(

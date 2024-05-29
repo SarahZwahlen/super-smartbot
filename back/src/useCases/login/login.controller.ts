@@ -8,10 +8,10 @@ import { authRepoInMemory } from '../../repositories/auth.repo';
 export const loginController = (req: Request, res: Response) => {
     const loginSchema: JSONSchemaType<UserData> = {
         type: 'object',
-        required: ['password', 'username'],
+        required: ['password', 'email'],
         properties: {
             password: { type: 'string' },
-            username: { type: 'string' }
+            email: { type: 'string' }
         },
         additionalProperties: false
     };
@@ -25,10 +25,7 @@ export const loginController = (req: Request, res: Response) => {
     const isLogged = loginUseCase(req.body, authRepoInMemory);
 
     if (isLogged) {
-        req.session.username = { username: req.body.username };
-
-        console.log('session', req.session.username);
-
+        req.session.username = { email: req.body.username };
         return res.status(200).json({ message: 'Logged' });
     } else {
         return res
