@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HTTPPostClient } from "../../tools/httpClients/post.http";
-
+import "./Login.scss";
 interface UserAuthData {
   email: string;
   password: string;
@@ -27,7 +27,7 @@ export const Login = () => {
   };
 
   return (
-    <form>
+    <form className="login-form">
       <label htmlFor="email">Email utilisateur</label>
       <input
         type="email"
@@ -45,7 +45,9 @@ export const Login = () => {
         onChange={handleLoginForm}
         value={userData.password}
       />
-      <button onClick={login}>Se connecter</button>
+      <button className="button-primary" onClick={login}>
+        Se connecter
+      </button>
     </form>
   );
 };

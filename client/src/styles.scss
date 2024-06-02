@@ -1,0 +1,83 @@
+$black-main : #040303;
+
+$maroon-100 : #754040;
+$maroon-200 : #612424;
+$maroon-300 : #461111;
+$maroon-400 : #2C0404;
+$maroon-500 : #140000;
+
+$red-100 : #F39B9B;
+$red-200 : #C75D5D;
+$red-300 : #A13333;
+$red-400 : #771313;
+$red-500 : #4E0000;
+
+$orange-100 : #F09A6A;
+$orange-200 : #D2733D;
+$orange-300 : #B3541E;
+$orange-400 : #923907;
+$orange-500 : #682500;
+
+$purple-100 : #9189E0;
+$purple-200 : #6A60CE;
+$purple-300 : #4d41bf;
+$purple-400 : #2F21B4;
+$purple-500 : #1E138B;
+
+$global-border-radius : 5px;
+
+$global-transition : 0.2s;
+
+html, *{
+    background-color: rgb(26, 26, 26);
+    color: $orange-100;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.App{
+    padding: 1rem;
+}
+
+h1{
+    font-size: 3rem
+}
+
+h2{
+    font-size: 2rem;
+}
+button{
+    cursor: pointer;
+    border-radius: $global-border-radius;
+    transition: $global-transition;
+}
+
+input, select, textarea{
+    border-radius: $global-border-radius;
+    padding: 0.5rem;
+    transition: $global-transition;
+    border: 1px solid $orange-500;
+
+    &:focus{
+        border: 1px solid $purple-200;
+        outline: none;
+    }
+
+}
+
+.button-primary{
+    width: 100%;
+    border: none;
+    padding: 0.5rem;
+    background-color: $orange-100;
+    color: white;
+    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.13) inset;
+    
+    &:hover{
+        background-color: $purple-100;
+        box-shadow: 0px 7px 10px 10px rgba(0, 0, 0, 0.356) inset;
+    }
+
+}
