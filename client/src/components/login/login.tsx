@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./Login.scss";
 import { UserAuthData } from "../../models/userAuthData.model";
-import { authenticationTool } from "../../tools/auth/authentication";
+import { useAuth } from "../../store/auth.context";
 
 export const Login = () => {
   const [userData, setUserData] = useState<UserAuthData>({
     email: "",
     password: "",
   });
+
+  const { login } = useAuth();
 
   const handleLoginForm = (data: React.ChangeEvent<HTMLInputElement>) => {
     if (data.target.name === "email") {
@@ -18,9 +20,9 @@ export const Login = () => {
     }
   };
 
-  const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const logUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    authenticationTool.login(userData);
+    login(userData);
   };
 
   return (
@@ -42,7 +44,7 @@ export const Login = () => {
         onChange={handleLoginForm}
         value={userData.password}
       />
-      <button className="button-primary" onClick={login}>
+      <button className="button-primary" onClick={logUser}>
         Se connecter
       </button>
     </form>

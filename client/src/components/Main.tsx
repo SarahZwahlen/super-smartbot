@@ -1,21 +1,16 @@
 import { Login } from "./login/login";
 import { SendMail } from "./send-mail/SendMail";
 import "./Main.scss";
-import { authenticationTool } from "../tools/auth/authentication";
-import { useEffect, useState } from "react";
+import { useAuth } from "../store/auth.context";
+import { Logout } from "./logout/Logout";
 export const Main = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
-    authenticationTool.isLogged
-  );
-
-  useEffect(() => {
-    console.log("use effect !");
-  }, [authenticationTool.isLogged]);
+  const { isLogged } = useAuth();
 
   return (
     <main>
-      {!authenticationTool.isLogged && <Login />}
-      {authenticationTool.isLogged && <SendMail />}
+      {!isLogged && <Login />}
+      {isLogged && <SendMail />}
+      {isLogged && <Logout />}
     </main>
   );
 };
