@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { HTTPPostClient } from "../../tools/httpClients/post.http";
-
-interface UserAuthData {
-  email: string;
-  password: string;
-}
+import "./Login.scss";
+import { UserAuthData } from "../../models/userAuthData.model";
+import { useAuth } from "../../store/auth.context";
 
 export const Login = () => {
   const [userData, setUserData] = useState<UserAuthData>({
     email: "",
     password: "",
   });
+
+  const { login } = useAuth();
 
   const handleLoginForm = (data: React.ChangeEvent<HTMLInputElement>) => {
     if (data.target.name === "email") {
@@ -21,13 +20,13 @@ export const Login = () => {
     }
   };
 
-  const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const logUser = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await HTTPPostClient("login", JSON.stringify(userData));
+    login(userData);
   };
 
   return (
-    <form>
+    <form className="login-form">
       <label htmlFor="email">Email utilisateur</label>
       <input
         type="email"
@@ -45,7 +44,9 @@ export const Login = () => {
         onChange={handleLoginForm}
         value={userData.password}
       />
-      <button onClick={login}>Se connecter</button>
+      <button className="button-primary" onClick={logUser}>
+        Se connecter
+      </button>
     </form>
   );
 };
