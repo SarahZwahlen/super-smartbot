@@ -16,6 +16,7 @@ Frontend :
 
 ## URL
 backend : https://super-smartbot.onrender.com/
+frontend : https://super-smartbot-6fqy.onrender.com/
 
 ## Send mail - WIP
 
