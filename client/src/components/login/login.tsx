@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { HTTPPostClient } from "../../tools/httpClients/post.http";
 import "./Login.scss";
-interface UserAuthData {
-  email: string;
-  password: string;
-}
+import { UserAuthData } from "../../models/userAuthData.model";
+import { authenticationTool } from "../../tools/auth/authentication";
 
 export const Login = () => {
   const [userData, setUserData] = useState<UserAuthData>({
@@ -23,7 +20,7 @@ export const Login = () => {
 
   const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await HTTPPostClient("login", JSON.stringify(userData));
+    authenticationTool.login(userData);
   };
 
   return (
