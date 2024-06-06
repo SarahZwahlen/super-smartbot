@@ -1,7 +1,7 @@
 # SUPER SMARTBOT
 
 ## Stack 
-NodeJS 10.2, TypeScript
+NodeJS 18.2, TypeScript
 
 Backend : 
   - frameword : ExpressJS,
