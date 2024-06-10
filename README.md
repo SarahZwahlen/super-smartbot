@@ -4,7 +4,7 @@
 NodeJS 18.2, TypeScript
 
 Backend : 
-  - frameword : ExpressJS,
+  - framework : ExpressJS,
   - test : Jest,
   - mailer : MailGun,
   - AI text generator : TextCortex
