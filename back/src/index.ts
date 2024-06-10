@@ -7,12 +7,10 @@ import compression from 'compression';
 import helmet from 'helmet';
 import { UserData } from './models/user.model';
 
-const MemoryStore = require('memorystore')(session);
-const cookieMaxAge = 3600000;
-
 dotenv.config();
 
 const app = express();
+const cookieMaxAge = 3600000;
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -27,11 +25,10 @@ app.use(
         cookie: {
             path: '/',
             httpOnly: true,
-            secure: false, // Has to be truthy but make the session works only with HTTPS
+            secure: process.env.APPLICATION_MODE === 'prod', // Has to be truthy but make the session works only with HTTPS
             sameSite: true,
             maxAge: cookieMaxAge
-        },
-        store: new MemoryStore({ checkPeriod: cookieMaxAge })
+        }
     })
 );
 declare module 'express-session' {
