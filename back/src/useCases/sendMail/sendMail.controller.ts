@@ -16,8 +16,9 @@ const sendMailController = async (req: Request, res: Response) => {
 
         return res.status(200).json({ message: 'OK' });
     } catch (error) {
-        console.log(error);
+        console.log(`Error at ${sendMailController.name}`, error);
         return res.status(400).json({
+            location: sendMailController.name,
             error
         });
     }

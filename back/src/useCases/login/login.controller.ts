@@ -30,6 +30,10 @@ export const loginController = (req: Request, res: Response) => {
     } else {
         return res
             .status(401)
-            .json({ message: 'Login failled', error: 'Authentication failed' });
+            .json({
+                message: 'Login failled',
+                error: 'Authentication failed',
+                location: loginController.name
+            });
     }
 };
