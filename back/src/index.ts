@@ -9,8 +9,14 @@ import { UserData } from './models/user.model';
 
 dotenv.config();
 const cookieMaxAge = 60 * 60 * 1000;
+declare module 'express-session' {
+    interface SessionData {
+        username: Pick<UserData, 'email'>;
+    }
+}
 
-const MemoryStore = require('memorystore')(session);
+const testSession = require('express-session');
+const MemoryStore = require('memorystore')(testSession);
 const app = express();
 
 app.use(express.static('public'));
@@ -19,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use(
-    session({
+    testSession({
         secret: process.env.COOKIE_SECRET!,
         resave: false,
         saveUninitialized: true,
@@ -33,11 +39,6 @@ app.use(
         store: new MemoryStore({ checkPeriod: cookieMaxAge })
     })
 );
-declare module 'express-session' {
-    interface SessionData {
-        username: Pick<UserData, 'email'>;
-    }
-}
 
 app.use(
     cors({
