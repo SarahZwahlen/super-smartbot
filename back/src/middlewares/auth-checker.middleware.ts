@@ -5,7 +5,7 @@ export const isAuthenticated = (
     res: Response,
     next: NextFunction
 ) => {
-    console.log('session', req.session);
+    console.log(`[MIDDLEWARE] ${isAuthenticated.name} - session`, req.session);
     if (req.session.username) {
         next();
     } else {

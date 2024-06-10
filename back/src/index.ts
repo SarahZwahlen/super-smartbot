@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import { UserData } from './models/user.model';
 
 dotenv.config();
-const cookieMaxAge = 3600000;
+const cookieMaxAge = 60 * 60 * 1000;
 
 const MemoryStore = require('memorystore')(session);
 const app = express();
