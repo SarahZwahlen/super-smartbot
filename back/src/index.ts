@@ -8,9 +8,10 @@ import helmet from 'helmet';
 import { UserData } from './models/user.model';
 
 dotenv.config();
-
-const app = express();
 const cookieMaxAge = 3600000;
+
+const MemoryStore = require('memorystore')(session);
+const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -28,7 +29,8 @@ app.use(
             secure: process.env.APPLICATION_MODE === 'prod', // Has to be truthy but make the session works only with HTTPS
             sameSite: true,
             maxAge: cookieMaxAge
-        }
+        },
+        store: new MemoryStore({ checkPeriod: cookieMaxAge })
     })
 );
 declare module 'express-session' {
@@ -36,6 +38,7 @@ declare module 'express-session' {
         username: Pick<UserData, 'email'>;
     }
 }
+
 app.use(
     cors({
         origin: process.env.FRONT_LOCAL_URL,
