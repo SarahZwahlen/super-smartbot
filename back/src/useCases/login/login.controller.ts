@@ -25,15 +25,14 @@ export const loginController = (req: Request, res: Response) => {
     const isLogged = loginUseCase(req.body, authRepoInMemory);
 
     if (isLogged) {
-        req.session.username = { email: req.body.username };
+        req.session.username = { email: req.body.email };
+        console.log('username', req.session.username);
         return res.status(200).json({ message: 'Logged' });
     } else {
-        return res
-            .status(401)
-            .json({
-                message: 'Login failled',
-                error: 'Authentication failed',
-                location: loginController.name
-            });
+        return res.status(401).json({
+            message: 'Login failled',
+            error: 'Authentication failed',
+            location: loginController.name
+        });
     }
 };
