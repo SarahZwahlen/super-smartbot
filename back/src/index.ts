@@ -15,8 +15,7 @@ declare module 'express-session' {
     }
 }
 
-const testSession = require('express-session');
-const MemoryStore = require('memorystore')(testSession);
+const MemoryStore = require('memorystore')(session);
 const app = express();
 
 app.use(express.static('public'));
@@ -25,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use(
-    testSession({
+    session({
         secret: process.env.COOKIE_SECRET!,
         resave: false,
         saveUninitialized: true,
@@ -36,7 +35,7 @@ app.use(
             sameSite: true,
             maxAge: cookieMaxAge
         },
-        store: new MemoryStore({ checkPeriod: cookieMaxAge })
+        store: new MemoryStore()
     })
 );
 
