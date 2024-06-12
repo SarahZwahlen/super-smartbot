@@ -8,6 +8,12 @@ updates :
       - '🤖 dependabot'
     commit-message:
       prefix: '[BACK DEPS]'
+    groups:
+      all-back-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "all"
   - package-ecosystem : "npm"
     directory : "/client"
     schedule :
@@ -16,3 +22,9 @@ updates :
       - '🤖 dependabot'
     commit-message:
       prefix: '[FRONT DEPS]'
+       groups:
+      all-front-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "all"
